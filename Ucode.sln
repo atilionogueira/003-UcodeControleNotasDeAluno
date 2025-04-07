@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ucode.Core", "Ucode.Core\Ucode.Core.csproj", "{5910A7BE-45FB-48BF-8EBA-5D4BD7483BF9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ucode.Api", "Ucode.Api\Ucode.Api.csproj", "{8843AF05-405A-4039-A7CA-00ABABF0F286}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5910A7BE-45FB-48BF-8EBA-5D4BD7483BF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5910A7BE-45FB-48BF-8EBA-5D4BD7483BF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5910A7BE-45FB-48BF-8EBA-5D4BD7483BF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5910A7BE-45FB-48BF-8EBA-5D4BD7483BF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8843AF05-405A-4039-A7CA-00ABABF0F286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8843AF05-405A-4039-A7CA-00ABABF0F286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8843AF05-405A-4039-A7CA-00ABABF0F286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8843AF05-405A-4039-A7CA-00ABABF0F286}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
