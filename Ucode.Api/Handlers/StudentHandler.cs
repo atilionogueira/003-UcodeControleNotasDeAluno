@@ -67,10 +67,7 @@ namespace Ucode.Api.Handlers
                     Name = request.Name,
                     Email = request.Email,
                     BirthDate = request.BirthDate,
-                    Gender = request.Gender,
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now
-
+                    Gender = request.Gender                 
                 };
 
                 await context.Students.AddAsync(student);

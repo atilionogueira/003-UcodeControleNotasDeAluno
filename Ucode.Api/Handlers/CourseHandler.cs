@@ -68,9 +68,7 @@ namespace Ucode.Api.Handlers
                     UserId = request.UserId,
                     Name = request.Name,
                     Description = request.Description,
-                    DurationInHours = request.DurationInHours,
-                    CreatedAt = DateTime.Now,
-                    UpdatedAt = DateTime.Now
+                    DurationInHours = request.DurationInHours                   
                 };
 
                 await context.Courses.AddAsync(course);

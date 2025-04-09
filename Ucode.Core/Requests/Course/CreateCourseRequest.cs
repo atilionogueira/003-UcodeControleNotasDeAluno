@@ -14,8 +14,7 @@ namespace Ucode.Core.Requests.Course
         public string? Description { get; set; }
 
         [Required(ErrorMessage = "Duração do curso inválido")]
-        public int DurationInHours { get; set; }
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime? UpdatedAt { get; set; }
+        public int DurationInHours { get; set; }       
+     
     }
 }

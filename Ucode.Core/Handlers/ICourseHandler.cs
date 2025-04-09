@@ -1,7 +1,6 @@
 ﻿
 using Ucode.Core.Models;
 using Ucode.Core.Requests.Course;
-using Ucode.Core.Requests.Students;
 using Ucode.Core.Responses;
 
 namespace Ucode.Core.Handlers

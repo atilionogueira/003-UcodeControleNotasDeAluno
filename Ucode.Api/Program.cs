@@ -33,6 +33,10 @@ builder.Services.AddSwaggerGen(x =>
 // Registra o handler como um serviço transiente
 builder.Services.AddTransient<IStudentHandler,StudentHandler>();
 builder.Services.AddTransient<ICourseHandler, CourseHandler>();
+builder.Services.AddTransient<IGradeHandler, GradeHandler>();
+builder.Services.AddTransient<IEnrollmentHandler, EnrollmentHandler>();
+
+
 
 var app = builder.Build();
 
@@ -40,7 +44,7 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Student API V1");
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API ControleAluno V1");
     c.RoutePrefix = string.Empty;
 });
 

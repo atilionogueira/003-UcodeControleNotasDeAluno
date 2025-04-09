@@ -1,7 +1,10 @@
 ﻿
 using Ucode.Api.Common.Api;
 using Ucode.Api.Endpoints.Courses;
+using Ucode.Api.Endpoints.Enrollments;
+using Ucode.Api.Endpoints.Grades;
 using Ucode.Api.Endpoints.Students;
+
 
 
 namespace Ucode.Api.Endpoints
@@ -30,6 +33,24 @@ namespace Ucode.Api.Endpoints
                .MapEndpoint<DeleteCourseEndpoint>()
                .MapEndpoint<GetCourseByIdEndpoint>()
                .MapEndpoint<GetAllCourseEndpoint>();
+
+            endpoints.MapGroup("v1/grades")
+              .WithTags("Grade")
+              //.RequireAuthorization()
+              .MapEndpoint<CreateGradeEndpoint>()
+              .MapEndpoint<UpdateGradeEndpoint>()
+              .MapEndpoint<DeleteGradeEndpoint>()
+              .MapEndpoint<GetGradeByIdEndpoint>()
+              .MapEndpoint<GetAllGradeEndpoint>();
+
+            endpoints.MapGroup("v1/Enrollment")
+             .WithTags("Enrollment")
+             //.RequireAuthorization()
+             .MapEndpoint<CreateEnrollmentEndpoint>()
+             .MapEndpoint<UpdateEnrollmentEndpoint>()
+             .MapEndpoint<DeleteEnrollmentsEndpoint>()
+             .MapEndpoint<GetEnrollmentByIdEndpoint>()
+             .MapEndpoint<GetAllEnrollmentEndpoint>();
         }
         private static IEndpointRouteBuilder MapEndpoint<TEndpoint>(this IEndpointRouteBuilder app)
             where TEndpoint : IEndpoint
