@@ -56,7 +56,8 @@ namespace Ucode.Api.Handlers
                 var grade = new Grade
                 {
                     UserId = request.UserId,
-                    EnrollmentId = request.EnrollmentId,                
+                    EnrollmentId = request.EnrollmentId, 
+                    StudentId = request.StudentId,
                     Value = request.Value
                 };
                 await context.Grades.AddAsync(grade);
@@ -82,8 +83,8 @@ namespace Ucode.Api.Handlers
                 if (grade is null)
                     return new Response<Grade?>(null, 404, "Grade não encontrado");
 
-
                 grade.EnrollmentId = request.EnrollmentId;
+                grade.StudentId = request.StudentId;
                 grade.Value = request.Value;
                 grade.UpdatedAt = DateTime.Now;
 
