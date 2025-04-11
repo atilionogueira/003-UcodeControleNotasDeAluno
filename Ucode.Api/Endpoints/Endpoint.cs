@@ -3,7 +3,9 @@ using Ucode.Api.Common.Api;
 using Ucode.Api.Endpoints.Courses;
 using Ucode.Api.Endpoints.Enrollments;
 using Ucode.Api.Endpoints.Grades;
+using Ucode.Api.Endpoints.Identity;
 using Ucode.Api.Endpoints.Students;
+using Ucode.Api.Models;
 
 
 
@@ -51,6 +53,16 @@ namespace Ucode.Api.Endpoints
              .MapEndpoint<DeleteEnrollmentsEndpoint>()
              .MapEndpoint<GetEnrollmentByIdEndpoint>()
              .MapEndpoint<GetAllEnrollmentEndpoint>();
+
+            endpoints.MapGroup("v1/identity")
+             .WithTags("Identity")
+             .MapIdentityApi<User>();
+
+            endpoints.MapGroup("v1/identity")
+             .WithTags("Identity")
+             .MapEndpoint<LogoutEndpoint>()
+             .MapEndpoint<GetRolesEndpoint>();
+
         }
         private static IEndpointRouteBuilder MapEndpoint<TEndpoint>(this IEndpointRouteBuilder app)
             where TEndpoint : IEndpoint

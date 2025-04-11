@@ -3,11 +3,28 @@ using Ucode.Api.Handlers;
 using Ucode.Core.Handlers;
 using Microsoft.EntityFrameworkCore;
 using Ucode.Api.Endpoints;
+using Microsoft.AspNetCore.Identity;
+using Ucode.Api.Models;
 
 
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configurações para o Swagger
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(x =>
+{
+    x.CustomSchemaIds(n => n.FullName);
+});
+
+//Registra o Identiy
+builder.Services
+    .AddAuthentication(IdentityConstants.ApplicationScheme)
+    .AddIdentityCookies();
+builder.Services.AddAuthorization();
+
 
 // Configuraçao para acessar o Banco
 
@@ -20,14 +37,12 @@ builder.Services.AddDbContext<AppDbContext>(x =>
     x.UseSqlServer(cnnStr);
 });
 
+builder.Services
+    .AddIdentityCore<User>()
+    .AddRoles<IdentityRole<long>>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddApiEndpoints();
 
-// Configurações para o Swagger
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(x =>
-{
-    x.CustomSchemaIds(n => n.FullName);
-});
 
 
 // Registra o handler como um serviço transiente
@@ -40,6 +55,11 @@ builder.Services.AddTransient<IEnrollmentHandler, EnrollmentHandler>();
 
 var app = builder.Build();
 
+//Configuração da Autorização e Autenticação do Identity
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 // Configura o uso do Swagger e a interface do Swagger UI
 app.UseSwagger();
 app.UseSwaggerUI(c =>
@@ -50,6 +70,8 @@ app.UseSwaggerUI(c =>
 
 app.MapGet("/",() => new { message = "OK"});
 app.MapEndpoints();
+
+
 
 app.Run();
 
