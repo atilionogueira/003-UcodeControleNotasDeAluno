@@ -6,6 +6,7 @@ using Ucode.Core.Requests.Course;
 using Ucode.Core.Responses;
 using Ucode.Core;
 using Ucode.Core.Requests.Grade;
+using System.Security.Claims;
 
 namespace Ucode.Api.Endpoints.Grades
 {
@@ -20,13 +21,14 @@ namespace Ucode.Api.Endpoints.Grades
             .Produces<PagedResponse<List<Grade>?>>();
 
         private static async Task<IResult> HandlerAsync(
+            ClaimsPrincipal user,
             IGradeHandler Handler,
             [FromQuery] int pageNumber = Configuration.DefaultPageNumber,
             [FromQuery] int pageSize = Configuration.DefaultPageSize)
         {
             var request = new GetAllGradeRequest
             {
-                UserId = "teste@teste.com.br",
+                UserId = user.Identity?.Name ?? string.Empty,
                 PageNumber = pageNumber,
                 PageSize = pageSize,
             };

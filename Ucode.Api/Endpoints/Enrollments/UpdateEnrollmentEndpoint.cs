@@ -1,4 +1,5 @@
-﻿using Ucode.Api.Common.Api;
+﻿using System.Security.Claims;
+using Ucode.Api.Common.Api;
 using Ucode.Core.Handlers;
 using Ucode.Core.Models;
 using Ucode.Core.Requests.Enrollments;
@@ -17,11 +18,12 @@ namespace Ucode.Api.Endpoints.Enrollments
             .Produces<Response<Enrollment?>>();
 
         private static async Task<IResult> HandleAsync(
+            ClaimsPrincipal user,
             IEnrollmentHandler handler,
             UpdateEnrollmentsRequest request,
             long id)
         {
-            request.UserId = "teste@teste.com.br";
+            request.UserId = user.Identity?.Name ?? string.Empty;
             request.Id = id;
 
             var result = await handler.UpdateAsync(request);

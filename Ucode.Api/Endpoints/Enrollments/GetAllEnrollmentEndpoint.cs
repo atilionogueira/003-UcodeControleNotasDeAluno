@@ -5,6 +5,7 @@ using Ucode.Core;
 using Ucode.Core.Models;
 using Ucode.Core.Handlers;
 using Ucode.Core.Requests.Enrollments;
+using System.Security.Claims;
 
 namespace Ucode.Api.Endpoints.Enrollments
 {
@@ -19,13 +20,14 @@ namespace Ucode.Api.Endpoints.Enrollments
             .Produces<PagedResponse<List<Enrollment>?>>();
 
         private static async Task<IResult> HandleAsync(
+            ClaimsPrincipal user,
             IEnrollmentHandler handler,
             [FromQuery] int pageNumber = Configuration.DefaultPageNumber,
             [FromQuery] int pageSize = Configuration.DefaultPageSize)
         {
             var request = new GetAllEnrollmentRequest
             {
-                UserId = "teste@teste.com.br",
+                UserId = user.Identity?.Name ?? string.Empty,
                 PageNumber = pageNumber,
                 PageSize = pageSize,
             };

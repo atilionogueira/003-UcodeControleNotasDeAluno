@@ -1,4 +1,5 @@
-﻿using Ucode.Api.Common.Api;
+﻿using System.Security.Claims;
+using Ucode.Api.Common.Api;
 using Ucode.Core.Handlers;
 using Ucode.Core.Models;
 using Ucode.Core.Requests.Course;
@@ -18,11 +19,12 @@ namespace Ucode.Api.Endpoints.Grades
             .Produces<Response<Grade?>>();
 
         private static async Task<IResult> HandlerAsync(
+            ClaimsPrincipal user,
             IGradeHandler handler,
             UpdateGradeRequest request,
             long id)
         {
-            request.UserId = "teste@teste.com.br";
+            request.UserId = user.Identity?.Name ?? string.Empty;
             request.Id = id;
 
             var result = await handler.UpdateAsync(request);

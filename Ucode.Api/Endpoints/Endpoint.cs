@@ -20,7 +20,7 @@ namespace Ucode.Api.Endpoints
 
             endpoints.MapGroup("v1/students")
                 .WithTags("Students")
-                //.RequireAuthorization()
+                .RequireAuthorization()
                 .MapEndpoint<CreateStudentEnpoint>()
                 .MapEndpoint<UpdateStudentEndpoint>()
                 .MapEndpoint<DeleteStudentEndpoint>()
@@ -29,7 +29,7 @@ namespace Ucode.Api.Endpoints
 
             endpoints.MapGroup("v1/courses")
                .WithTags("Course")
-               //.RequireAuthorization()
+               .RequireAuthorization()
                .MapEndpoint<CreateCourseEndpoint>()
                .MapEndpoint<UpdateCourseEndpoint>()
                .MapEndpoint<DeleteCourseEndpoint>()
@@ -38,7 +38,7 @@ namespace Ucode.Api.Endpoints
 
             endpoints.MapGroup("v1/grades")
               .WithTags("Grade")
-              //.RequireAuthorization()
+              .RequireAuthorization()
               .MapEndpoint<CreateGradeEndpoint>()
               .MapEndpoint<UpdateGradeEndpoint>()
               .MapEndpoint<DeleteGradeEndpoint>()
@@ -47,7 +47,7 @@ namespace Ucode.Api.Endpoints
 
             endpoints.MapGroup("v1/Enrollment")
              .WithTags("Enrollment")
-             //.RequireAuthorization()
+             .RequireAuthorization()
              .MapEndpoint<CreateEnrollmentEndpoint>()
              .MapEndpoint<UpdateEnrollmentEndpoint>()
              .MapEndpoint<DeleteEnrollmentsEndpoint>()

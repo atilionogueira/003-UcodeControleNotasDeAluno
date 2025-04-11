@@ -1,4 +1,5 @@
-﻿using Ucode.Api.Common.Api;
+﻿using System.Security.Claims;
+using Ucode.Api.Common.Api;
 using Ucode.Core.Handlers;
 using Ucode.Core.Models;
 using Ucode.Core.Requests.Enrollments;
@@ -17,12 +18,13 @@ namespace Ucode.Api.Endpoints.Enrollments
                .Produces<Response<Enrollment?>>();
 
         private static async Task<IResult> HandlerAsync(
+            ClaimsPrincipal user,
             IEnrollmentHandler handler,
             long id)
         {
             var request = new DeleteEnrollmentsRequest
             {
-                UserId = "teste@teste.com.br",
+                UserId = user.Identity?.Name ?? string.Empty,
                 Id = id
             };
 

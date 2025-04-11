@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using Ucode.Api.Common.Api;
 using Ucode.Core;
 using Ucode.Core.Handlers;
@@ -19,13 +20,14 @@ namespace Ucode.Api.Endpoints.Students
                     .Produces<PagedResponse<List<Student>?>>();
 
         private static async Task<IResult> HandleAsync(
+            ClaimsPrincipal user,
             IStudentHandler handler,
             [FromQuery]int pageNumber = Configuration.DefaultPageNumber,
             [FromQuery]int pageSize = Configuration.DefaultPageSize)
         {
             var request = new GetAllStudentRequest
             {
-                UserId = "teste@teste.com.br",
+                UserId = user.Identity?.Name ?? string.Empty,
                 PageNumber = pageNumber,
                 PageSize = pageSize,
             };

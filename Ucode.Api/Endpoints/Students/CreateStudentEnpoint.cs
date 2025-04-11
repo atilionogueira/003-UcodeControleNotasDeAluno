@@ -1,4 +1,5 @@
-﻿using Ucode.Api.Common.Api;
+﻿using System.Security.Claims;
+using Ucode.Api.Common.Api;
 using Ucode.Core.Handlers;
 using Ucode.Core.Models;
 using Ucode.Core.Requests.Students;
@@ -18,10 +19,11 @@ namespace Ucode.Api.Endpoints.Students
 
 
         private static async Task<IResult> HandlerAsync(
+           ClaimsPrincipal user,
            IStudentHandler handler,
            CreateStudentRequest request)
         {
-            request.UserId = "teste@teste.com.br";
+            request.UserId = user.Identity?.Name ?? string.Empty;
             var result = await handler.CreateAsync(request);
 
             return result.IsSuccess

@@ -5,6 +5,7 @@ using Ucode.Core.Models;
 using Ucode.Core.Requests.Course;
 using Ucode.Core.Responses;
 using Ucode.Core;
+using System.Security.Claims;
 
 namespace Ucode.Api.Endpoints.Courses
 {
@@ -19,13 +20,14 @@ namespace Ucode.Api.Endpoints.Courses
             .Produces<PagedResponse<List<Course>?>>();
 
         private static async Task<IResult> HandlerAsync(
+            ClaimsPrincipal user,
             ICourseHandler Handler,
             [FromQuery] int pageNumber = Configuration.DefaultPageNumber,
             [FromQuery] int pageSize = Configuration.DefaultPageSize)
         {
             var request = new GetAllCourseRequest
             {
-                UserId = "teste@teste.com.br",
+                UserId = user.Identity?.Name ?? string.Empty,
                 PageNumber = pageNumber,
                 PageSize = pageSize,
             };

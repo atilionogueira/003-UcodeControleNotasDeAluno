@@ -1,4 +1,5 @@
-﻿using Ucode.Api.Common.Api;
+﻿using System.Security.Claims;
+using Ucode.Api.Common.Api;
 using Ucode.Core.Handlers;
 using Ucode.Core.Models;
 using Ucode.Core.Requests.Grade;
@@ -19,10 +20,11 @@ namespace Ucode.Api.Endpoints.Grades
 
 
         private static async Task<IResult> HandlerAsync(
+           ClaimsPrincipal user,
            IGradeHandler handler,
            CreateGradeRequest request)
         {
-            request.UserId = "teste@teste.com.br";
+            request.UserId = user.Identity?.Name ?? string.Empty;
             var result = await handler.CreateAsync(request);
 
             return result.IsSuccess

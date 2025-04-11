@@ -1,4 +1,5 @@
-﻿using Ucode.Api.Common.Api;
+﻿using System.Security.Claims;
+using Ucode.Api.Common.Api;
 using Ucode.Core.Handlers;
 using Ucode.Core.Models;
 using Ucode.Core.Requests.Students;
@@ -17,12 +18,13 @@ namespace Ucode.Api.Endpoints.Students
                     .Produces<Response<Student?>>();
 
         private static async Task<IResult> HandleAsync(
+            ClaimsPrincipal user,
             IStudentHandler handler,
             long id)
         {
             var request = new GetStudentByIdRequest
             {
-                UserId = "teste@teste.com.br",
+                UserId = user.Identity?.Name ?? string.Empty,
                 Id = id,
             };
 
