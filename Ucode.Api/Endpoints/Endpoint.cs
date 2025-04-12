@@ -1,5 +1,4 @@
-﻿
-using Ucode.Api.Common.Api;
+﻿using Ucode.Api.Common.Api;
 using Ucode.Api.Endpoints.Courses;
 using Ucode.Api.Endpoints.Enrollments;
 using Ucode.Api.Endpoints.Grades;
@@ -17,6 +16,11 @@ namespace Ucode.Api.Endpoints
         {
             var endpoints = app
                 .MapGroup("");
+
+            endpoints.MapGroup("/")
+                .WithTags("Health Check")
+                .MapGet("/", () => new { message = "OK" });
+
 
             endpoints.MapGroup("v1/students")
                 .WithTags("Students")
