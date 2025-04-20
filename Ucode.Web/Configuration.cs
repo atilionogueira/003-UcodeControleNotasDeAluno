@@ -1,10 +1,13 @@
 ﻿using MudBlazor.Utilities;
 using MudBlazor;
 
-namespace Ucode.Web.wwwroot
+namespace Ucode.Web
 {
     public static class Configuration
     {
+        public const string HttpClientName = "ucode";
+        public static string BackendUrl { get; set; } = "https://localhost:7209";
+
         public static MudTheme Theme = new()
         {
             Typography = new Typography
@@ -39,7 +42,7 @@ namespace Ucode.Web.wwwroot
                 AppbarText = Colors.Shades.White,
                 TextPrimary = Colors.Shades.White,
                 TextSecondary = Colors.Grey.Lighten1
-            }   
+            }
         };
     }
 }
