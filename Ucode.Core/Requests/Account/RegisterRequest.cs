@@ -1,14 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using System.ComponentModel.DataAnnotations;
 
 namespace Ucode.Core.Requests.Account
 {
-    public class RegisterRequest : Request
+    public class RegisterRequest
     {
-        [Required(ErrorMessage = "E-mail")]
-        [EmailAddress(ErrorMessage = "E-mail inválido")]
+
+        [Required(ErrorMessage = "O campo E-mail é obrigatório.")]
+        [EmailAddress(ErrorMessage = "O e-mail informado é inválido.")]
         public string Email { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Senha Inválida")]
+        [Required(ErrorMessage = "O campo Senha é obrigatório.")]
         public string Password { get; set; } = string.Empty;
     }
 }

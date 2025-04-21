@@ -2,7 +2,9 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
+using Ucode.Core.Handlers;
 using Ucode.Web;
+using Ucode.Web.Handlers;
 using Ucode.Web.Security;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -28,5 +30,7 @@ builder.Services.AddHttpClient(Configuration.HttpClientName,opt =>
     opt.BaseAddress = new Uri(Configuration.BackendUrl);
 })
     .AddHttpMessageHandler<CookieHandler>();
+
+builder.Services.AddTransient<IAccountHandler, AccountHandler>();
 
 await builder.Build().RunAsync();
