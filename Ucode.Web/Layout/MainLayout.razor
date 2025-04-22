@@ -12,13 +12,29 @@
     <Authorized>
         <MudLayout>
             <MudAppBar>
+                <MudIconButton 
+                    Icon="@Icons.Material.Filled.Menu"
+                    Color="Color.Inherit"
+                    Edge="Edge.Start"
+                    OnClick="ToggleDrawer" />
                 Ucode
                 <MudSpacer />
                 <MudText Typo="Typo.caption">
                     @context.User.Identity?.Name
                 </MudText>
-                <MudSwitch @bind-Value="@_isDarkMode" />
+                <MudSwitch
+                    Color="Color.Inherit"
+                    T="bool"
+                    @bind-Value="@_isDarkMode"
+                    Class="ma-4"
+                    ThumbIcon="@Icons.TwoTone.Lightbulb"/>
             </MudAppBar>
+           
+            <MudDrawer                
+                @bind-Open="@_isDrawerOpened"
+                Style="background-color: #0D47A1; color: white;">
+                <h3> Nav Menu</h3>
+            </MudDrawer>
             <MudMainContent>
                 <MudContainer>
                     @Body
