@@ -32,5 +32,6 @@ builder.Services.AddHttpClient(Configuration.HttpClientName,opt =>
     .AddHttpMessageHandler<CookieHandler>();
 
 builder.Services.AddTransient<IAccountHandler, AccountHandler>();
+builder.Services.AddTransient<IStudentHandler,StudentHandler>();
 
 await builder.Build().RunAsync();

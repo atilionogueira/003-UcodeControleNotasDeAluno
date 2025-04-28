@@ -1,0 +1,49 @@
+﻿@page "/students"
+@inherits ListaStudentPage
+
+<MudText Typo="Typo.h3">Estudantes</MudText>
+<div class="d-flex justify-end">
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.TwoTone.Add" Href="/Students/Adicionar">Novo Estudante</MudButton>
+
+</div>
+
+<MudDataGrid class="mt-4"
+             Items="@Students"
+             Filterable="true"
+             QuickFilter="Filter"
+             Hideable="true">
+    <ToolBarContent>
+        <MudText Typo="Typo.h6">Estudantes</MudText>
+        <MudSpacer />
+        <MudTextField @bind-Value="SearchTerm"
+                      Placeholder="Filtar..."
+                      Adornment="Adornment.Start"
+                      AdornmentIcon="@Icons.Material.Filled.Search"
+                      Immediate="true"
+                      IconSize="Size.Medium"
+                      Class="mt-0">
+        </MudTextField>
+    </ToolBarContent>
+    <Columns>
+        <PropertyColumn Property="x => x.Id" Title="#" />
+        <PropertyColumn Property="x => x.Name" Title="Nome" />
+        <PropertyColumn Property="x => x.BirthDate" Title="Data do Nascimento" Format="dd/MM/yyyy" />
+        <PropertyColumn Property="x =>x.Email" Title="E-email" />
+        <TemplateColumn Class="d-flex Justity-end">
+            <CellTemplate>
+                <MudStack Row>
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit"
+                                   Href="@($"students/editar/{context.Item.Id}")"
+                                   Color="Color.Primary">
+
+                    </MudIconButton>
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                                   Color="Color.Error"
+                                   aria-label="Excluir"
+                                   OnClick="() => OnDeleteButtonClickeAsync(context.Item.Id, context.Item.Name)">
+                    </MudIconButton>
+                </MudStack>
+            </CellTemplate>
+        </TemplateColumn>
+    </Columns>
+</MudDataGrid>

@@ -17,10 +17,7 @@ namespace Ucode.Core.Requests.Students
 
         [Required(ErrorMessage = "Data de nascimento é obrigatória.")]
         [DataType(DataType.Date, ErrorMessage = "Data de nascimento deve ser uma data válida.")]
-        public DateTime BirthDate { get; set; }
-
-        [Required(ErrorMessage = "Data de nascimento é obrigatória.")]
-        public DateTime? UpdatedAt { get; set; } 
+        public DateTime? BirthDate { get; set; }      
 
         [Required(ErrorMessage = "Gênero é obrigatório.")]
         public EGender Gender { get; set; }

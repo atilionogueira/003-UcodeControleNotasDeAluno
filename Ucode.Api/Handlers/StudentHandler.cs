@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Runtime.CompilerServices;
 using Ucode.Api.Data;
 using Ucode.Core.Handlers;
 using Ucode.Core.Models;

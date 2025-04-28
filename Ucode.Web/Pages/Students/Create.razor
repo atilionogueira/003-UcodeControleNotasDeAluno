@@ -1,0 +1,47 @@
+﻿@page "/students/adicionar"
+@using Ucode.Core.Emuns
+@inherits CreateStudentPage
+
+<MudText Typo="Typo.h3">Novo Estudante</MudText>
+<MudPaper Class="pa-8 mt-4">
+    <EditForm Model="InputModel" OnValidSubmit="OnValidSubmitAsync">
+        <DataAnnotationsValidator />
+
+        <MudTextField Label="Nome"
+                      HelperText="Campo obrigatório"
+                      @bind-Value="InputModel.Name"
+                      For="@(() => InputModel.Name)" />
+
+        <MudTextField Label="E-Mail"
+                      HelperText="Campo obrigatório"
+                      @bind-Value="InputModel.Email"
+                      For="@(() => InputModel.Email)" />
+
+        <MudDatePicker Label="Data do Nascimento"
+                       HelperText="Campo obrigatório"
+                       @bind-Date="@InputModel.BirthDate"
+                       Adornment="Adornment.Start"
+                       AdornmentIcon="@Icons.Material.Filled.Event" />
+
+        <MudSelect T="EGender"
+                   Label="Gênero"
+                   @bind-Value="InputModel.Gender"
+                   For="@(() => InputModel.Gender)"
+                   Required="true"
+                   HelperText="Campo obrigatório">
+
+            <MudSelectItem Value="@(default(EGender))" Disabled="true">Selecione...</MudSelectItem>
+
+            @foreach (var gender in Enum.GetValues(typeof(EGender)).Cast<EGender>())
+            {
+                <MudSelectItem Value="@gender">@gender.ToString()</MudSelectItem>
+            }
+        </MudSelect>
+
+        <MudButton ButtonType="ButtonType.Submit"
+                   Variant="Variant.Filled"
+                   Color="Color.Primary">
+            Salvar
+        </MudButton>
+    </EditForm>
+</MudPaper>

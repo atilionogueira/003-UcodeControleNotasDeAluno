@@ -2,48 +2,45 @@
 @inherits LayoutComponentBase
 
 
-<MudThemeProvider 
-    @ref="_mudThemeProvider"
-    @bind-IsDarkMode="_isDarkMode"
-    Theme="Configuration.Theme" />
-<MudSnackbarProvider  />
+
+<MudThemeProvider @ref="_mudThemeProvider"
+                  @bind-IsDarkMode="_isDarkMode"
+                  Theme="Configuration.Theme" />
+<MudSnackbarProvider />
+<MudDialogProvider />
 
 <AuthorizeView>
     <Authorized>
         <MudLayout>
             <MudAppBar>
-                <MudIconButton 
-                    Icon="@Icons.Material.Filled.Menu"
-                    Color="Color.Inherit"
-                    Edge="Edge.Start"
-                    OnClick="ToggleDrawer" />
+                <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                               Color="Color.Inherit"
+                               Edge="Edge.Start"
+                               OnClick="ToggleDrawer" />
                 Ucode
                 <MudSpacer />
                 <MudText Typo="Typo.caption">
                     @context.User.Identity?.Name
                 </MudText>
-                <MudSwitch
-                    Color="Color.Inherit"
-                    T="bool"
-                    @bind-Value="@_isDarkMode"
-                    Class="ma-4"
-                    ThumbIcon="@Icons.TwoTone.Lightbulb"/>
+                <MudSwitch Color="Color.Inherit"
+                           T="bool"
+                           @bind-Value="@_isDarkMode"
+                           Class="ma-4"
+                           ThumbIcon="@Icons.TwoTone.Lightbulb" />
             </MudAppBar>
-           
-            <MudDrawer                
-                @bind-Open="@_isDrawerOpened"
-                Style="background-color: #0D47A1; color: white;">
-                <h3> Nav Menu</h3>
+
+            <MudDrawer @bind-Open="@_isDrawerOpened">
+                <NavMenu />
             </MudDrawer>
             <MudMainContent>
-                <MudContainer>
+                <MudContainer Class="mt=4">
                     @Body
                 </MudContainer>
             </MudMainContent>
         </MudLayout>
     </Authorized>
     <NotAuthorized>
-        <LoginRedirect/>
+        <LoginRedirect />
     </NotAuthorized>
 </AuthorizeView>
 
@@ -73,5 +70,6 @@
 
     private void ToggleDrawer()
         => _isDrawerOpened = !_isDrawerOpened;
+
 
 }

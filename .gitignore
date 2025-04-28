@@ -8,3 +8,7 @@ appsettings.Development.json
 
 # Ignorar a pasta do Visual Studio e arquivos temporários
 .vs/
+*.user
+*.suo
+*.db
+*.sqlite

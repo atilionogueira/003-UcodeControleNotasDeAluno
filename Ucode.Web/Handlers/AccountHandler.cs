@@ -14,10 +14,10 @@ namespace Ucode.Web.Handlers
         {
             var result = await _client.PostAsJsonAsync("v1/identity/login?useCookies=true", request);
             return result.IsSuccessStatusCode
-                ? new Response<string>("Login realizado com sucesso",200, "Login realizado com sucesso")
-                : new Response<string>("null", 400,"Não foi possível realizar login");               
+                ? new Response<string>("Login realizado com sucesso", 200, "Login realizado com sucesso")
+                : new Response<string>("null", 400, "Não foi possível realizar login");
         }
-     
+
         public async Task<Response<string>> RegisterAsync(RegisterRequest request)
         {
             var result = await _client.PostAsJsonAsync("v1/identity/register", request);
@@ -33,6 +33,6 @@ namespace Ucode.Web.Handlers
             await _client.PostAsJsonAsync("v1/identity/logout", emptyContent);
         }
 
-       
+
     }
 }
