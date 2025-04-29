@@ -1,6 +1,5 @@
 ﻿using System.Security.Claims;
 using Ucode.Api.Common.Api;
-using Ucode.Api.Models;
 using Ucode.Core.Handlers;
 using Ucode.Core.Models;
 using Ucode.Core.Requests.Course;
@@ -11,7 +10,7 @@ namespace Ucode.Api.Endpoints.Courses
     public class UpdateCourseEndpoint : IEndpoint
     {
         public static void Map(IEndpointRouteBuilder app)
-             => app.MapPut("/", HandlerAsync)
+             => app.MapPut("/{id}", HandlerAsync)
             .WithName("Course : Update")
             .WithSummary("Update the Course")
             .WithDescription("Update the Course")

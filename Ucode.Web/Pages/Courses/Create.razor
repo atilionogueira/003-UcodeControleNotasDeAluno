@@ -1,0 +1,35 @@
+﻿@page "/courses/adicionar" 
+@inherits CreateCoursePage
+
+
+<MudText Typo="Typo.h3">Novo Curso</MudText>
+
+<MudPaper Class="pa-8 mt-4">
+    <EditForm Model="@InputModel" OnValidSubmit="OnValidSubmitAsync">
+        <DataAnnotationsValidator />
+
+        <MudTextField Label="Nome"
+                      HelperText="Campo obrigatório"
+                      @bind-Value="InputModel.Name"
+                      For="@(() => InputModel.Name)" />
+
+        <MudTextField Label="Periodo do Curso?"
+                      T="int"                    
+                      Variant="Variant.Text"
+                      HelperText="Informe o tempo do Curso"
+                      @bind-Value="InputModel.DurationInHours"
+                      For="@(() => InputModel.DurationInHours)"/>
+
+        <MudTextField Label="Discrição do Curso"
+                      Lins="5"
+                      HelperText="Campo obrigatório"
+                      @bind-Value="InputModel.Description"
+                      For="@(() => InputModel.Description)" />
+       
+        <MudButton ButtonType="ButtonType.Submit"
+                   Variant="Variant.Filled"
+                   Color="Color.Primary">
+            Salvar
+        </MudButton>
+    </EditForm>
+</MudPaper>

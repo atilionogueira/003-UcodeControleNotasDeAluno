@@ -10,7 +10,7 @@ namespace Ucode.Api.Endpoints.Courses
     public class DeleteCourseEndpoint : IEndpoint
     {
         public static void Map(IEndpointRouteBuilder app)
-            => app.MapDelete("/", HandlerAsync)
+            => app.MapDelete("/{id}", HandlerAsync)
             .WithName("Delete: Course")
             .WithSummary("Delete the Course")
             .WithDescription("Delete the Course")
