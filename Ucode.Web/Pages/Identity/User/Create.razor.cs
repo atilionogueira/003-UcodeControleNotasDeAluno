@@ -1,19 +1,21 @@
 ﻿using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using Ucode.Core.Handlers;
-using Ucode.Core.Requests.Course;
+using Ucode.Core.Requests.Account.Admin.Users;
 
-namespace Ucode.Web.Pages.Courses
+
+namespace Ucode.Web.Pages.Identity.User
 {
-    public partial class CreateCoursePage : ComponentBase
+    public partial class CreateUserPage : ComponentBase
     {
         #region Properties
         public bool isBusy { get; set; } = false;
-        public CreateCourseRequest InputModel { get; set; } = new();
+        public CreateUserRequest InputModel { get; set; } = new();
         #endregion
+
         #region Services
         [Inject]
-        public ICourseHandler Handler { get; set; } = null!;
+        public IUserAdminHandler Handler { get; set; } = null!;
         [Inject]
         public NavigationManager NavigationManager { get; set; } = null!;
         [Inject]
@@ -21,18 +23,19 @@ namespace Ucode.Web.Pages.Courses
         #endregion
 
         #region Methods
-
         public async Task OnValidSubmitAsync()
         {
             isBusy = true;
 
             try
             {
-                var result = await Handler.CreateAsync(InputModel);
+                // Correção: passando CancellationToken.None
+                var result = await Handler.CreateUserAsync(InputModel, CancellationToken.None);
+
                 if (result.IsSuccess)
                 {
-                    Snackbar.Add(result.Message, Severity.Error);
-                    NavigationManager.NavigateTo("/courses");
+                    Snackbar.Add("Usuário criado com sucesso!", Severity.Success);
+                    NavigationManager.NavigateTo("/users");
                 }
                 else
                 {
@@ -41,7 +44,7 @@ namespace Ucode.Web.Pages.Courses
             }
             catch (Exception ex)
             {
-                Snackbar.Add(ex.Message, Severity.Error);
+                Snackbar.Add($"Erro: {ex.Message}", Severity.Error);
             }
             finally
             {

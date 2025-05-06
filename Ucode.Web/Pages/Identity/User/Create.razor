@@ -1,0 +1,37 @@
+﻿@page "/users/adicionar"
+@inherits CreateUserPage
+
+<MudText Typo="Typo.h3">Novo Usuário</MudText>
+
+<MudPaper Class="pa-8 mt-4">
+    <EditForm Model="@InputModel" OnValidSubmit="OnValidSubmitAsync">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <MudTextField Label="Nome de Usuário"
+                      @bind-Value="InputModel.UserName"
+                      For="@(() => InputModel.UserName)"
+                      HelperText="Campo obrigatório"
+                      Required="true" />
+
+        <MudTextField Label="Email"
+                      @bind-Value="InputModel.Email"
+                      For="@(() => InputModel.Email)"
+                      HelperText="Campo obrigatório"
+                      Required="true" />
+
+        <MudTextField Label="Senha"
+                      @bind-Value="InputModel.Password"
+                      For="@(() => InputModel.Password)"
+                      InputType="InputType.Password"
+                      HelperText="Campo obrigatório"
+                      Required="true" />
+
+        <MudButton ButtonType="ButtonType.Submit"
+                   Variant="Variant.Filled"
+                   Color="Color.Primary"
+                   Disabled="@isBusy">
+            Salvar
+        </MudButton>
+    </EditForm>
+</MudPaper>

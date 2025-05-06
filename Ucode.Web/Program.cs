@@ -34,5 +34,7 @@ builder.Services.AddHttpClient(Configuration.HttpClientName,opt =>
 builder.Services.AddTransient<IAccountHandler, AccountHandler>();
 builder.Services.AddTransient<IStudentHandler,StudentHandler>();
 builder.Services.AddTransient<ICourseHandler, CourseHandler>();
+builder.Services.AddTransient<IUserAdminHandler, UserAdminHandler>();
+
 
 await builder.Build().RunAsync();
