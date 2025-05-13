@@ -29,6 +29,7 @@ namespace Ucode.Core.Handlers
                         UserName = u.UserName ?? string.Empty,
                         Email = u.Email ?? string.Empty,
                         PhoneNumber = u.PhoneNumber ?? string.Empty,
+                        FullName = u.FullName ?? string.Empty,
                         IsEmailConfirmed = u.EmailConfirmed
                     })
                     .ToListAsync(cancellationToken);
@@ -56,6 +57,7 @@ namespace Ucode.Core.Handlers
                     UserName = user.UserName ?? string.Empty,
                     Email = user.Email ?? string.Empty,
                     PhoneNumber = user.PhoneNumber ?? string.Empty,
+                    FullName = user.FullName ?? string.Empty,
                     IsEmailConfirmed = user.EmailConfirmed
                 };
 
@@ -74,7 +76,8 @@ namespace Ucode.Core.Handlers
                 {
                     UserName = request.UserName,
                     Email = request.Email,
-                    PhoneNumber = request.PhoneNumber
+                    PhoneNumber = request.PhoneNumber,                    
+                    FullName = request.FullName
                 };
 
                 var result = await userManager.CreateAsync(user, request.Password);
@@ -88,6 +91,7 @@ namespace Ucode.Core.Handlers
                     UserName = user.UserName,
                     Email = user.Email,
                     PhoneNumber = user.PhoneNumber,
+                    FullName = user.FullName,
                     IsEmailConfirmed = user.EmailConfirmed
                 };
 
@@ -111,6 +115,7 @@ namespace Ucode.Core.Handlers
                 user.UserName = request.UserName ?? user.UserName;
                 user.Email = request.Email ?? user.Email;
                 user.PhoneNumber = request.PhoneNumber ?? user.PhoneNumber;
+                user.FullName = request.FullName ?? user.FullName;
 
                 var result = await userManager.UpdateAsync(user);
 
@@ -123,6 +128,7 @@ namespace Ucode.Core.Handlers
                     UserName = user.UserName ?? string.Empty,
                     Email = user.Email ?? string.Empty,
                     PhoneNumber = user.PhoneNumber ?? string.Empty,
+                    FullName = user.FullName ?? string.Empty,
                     IsEmailConfirmed = user.EmailConfirmed
                 };
 
@@ -154,6 +160,7 @@ namespace Ucode.Core.Handlers
                     UserName = user.UserName ?? string.Empty,
                     Email = user.Email ?? string.Empty,
                     PhoneNumber = user.PhoneNumber ?? string.Empty,
+                    FullName = user.FullName ?? string.Empty,
                     IsEmailConfirmed = user.EmailConfirmed
                 };
 

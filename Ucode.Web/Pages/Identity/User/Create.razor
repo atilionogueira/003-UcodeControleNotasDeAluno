@@ -8,15 +8,26 @@
         <DataAnnotationsValidator />
         <ValidationSummary />
 
-        <MudTextField Label="Nome de Usuário"
+        <MudTextField Label="Login"
                       @bind-Value="InputModel.UserName"
                       For="@(() => InputModel.UserName)"
+                      HelperText="Campo obrigatório"
+                      Required="true" />
+
+        <MudTextField Label="Nome de Usuário"
+                      @bind-Value="InputModel.FullName"
+                      For="@(() => InputModel.FullName)"
                       HelperText="Campo obrigatório"
                       Required="true" />
 
         <MudTextField Label="Email"
                       @bind-Value="InputModel.Email"
                       For="@(() => InputModel.Email)"
+                      HelperText="Campo obrigatório"
+                      Required="true" />
+        <MudTextField Label="Celular"
+                      @bind-Value="InputModel.PhoneNumber"
+                      For="@(() => InputModel.PhoneNumber)"
                       HelperText="Campo obrigatório"
                       Required="true" />
 

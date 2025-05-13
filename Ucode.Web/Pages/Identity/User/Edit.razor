@@ -22,6 +22,11 @@ else
                           @bind-Value="InputModel.UserName"
                           HelperText="Campo obrigatório" />
 
+            <MudTextField Label="Nome do Usuário"
+                          For="@(() => InputModel.FullName)"
+                          @bind-Value="InputModel.FullName"
+                          HelperText="Campo obrigatório" />
+
             <MudTextField Label="Email"
                           For="@(() => InputModel.Email)"
                           @bind-Value="InputModel.Email"

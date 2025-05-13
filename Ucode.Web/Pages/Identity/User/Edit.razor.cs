@@ -23,7 +23,7 @@ namespace Ucode.Web.Pages.Identity.User
         [Inject] public IUserAdminHandler Handler { get; set; } = null!;
         #endregion
 
-        #region Lifecycle
+        #region Overrides
         protected override async Task OnInitializedAsync()
         {
             if (!long.TryParse(Id, out var userId))
@@ -55,6 +55,7 @@ namespace Ucode.Web.Pages.Identity.User
                         Id = response.Data.Id,
                         UserName = response.Data.UserName,
                         Email = response.Data.Email,
+                        FullName = response.Data.FullName,
                         PhoneNumber = response.Data.PhoneNumber
                     };
                 }

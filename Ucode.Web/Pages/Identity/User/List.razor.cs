@@ -83,6 +83,8 @@ namespace Ucode.Web.Pages.Identity.User
 
             if (result is true)
                 await OnDeleteAsync(id, userName);
+
+            StateHasChanged();
         }
 
         // Método que executa a exclusão do usuário
