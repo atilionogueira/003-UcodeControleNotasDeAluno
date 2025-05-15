@@ -71,6 +71,7 @@ namespace Ucode.Api.Endpoints
              .MapEndpoint<GetAllUserEndpoint>()
              .MapEndpoint<GetUserByIdEndpoint>()
              .MapEndpoint<LogoutEndpoint>()
+             .MapEndpoint<RegisterEndpoint>()
              .MapEndpoint<GetRolesEndpoint>();
 
         }

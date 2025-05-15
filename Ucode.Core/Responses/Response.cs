@@ -12,13 +12,16 @@ namespace Ucode.Core.Responses
         [JsonIgnore] // impedi que o IsSuccess seja exibido na tela
         public bool IsSuccess => _code >= 200 && _code <= 299;
 
+        public int Status => _code;
+
         [JsonConstructor]
         public Response() => _code = Configuration.DefaultStatusCode;
         
         public Response(TData? data, int code = 200, string? message = null)
         {
             Data = data;
-            _code = Configuration.DefaultStatusCode;
+            //_code = Configuration.DefaultStatusCode;
+            _code = code;
             Message = message;
         }          
 

@@ -20,11 +20,20 @@ namespace Ucode.Web.Handlers
 
         public async Task<Response<string>> RegisterAsync(RegisterRequest request)
         {
-            var result = await _client.PostAsJsonAsync("v1/identity/register", request);
+            /*
+            var result = await _client.PostAsJsonAsync("v1/identity/register-basic", request);
 
             return result.IsSuccessStatusCode
                 ? new Response<string>("Cadastro realizado com sucesso!", 201, "Cadastro realizado com sucesso!")
                 : new Response<string>(null, 400, "Não foi possível realizar o seu cadastro");
+              */
+
+            var result = await _client.PostAsJsonAsync("v1/identity/register-basic", request);
+
+            var content = await result.Content.ReadFromJsonAsync<Response<string>>();
+
+            return content ?? new Response<string>(null, 400, "Não foi possível realizar o seu cadastro");
+
         }
 
         public async Task LogoutAsync()

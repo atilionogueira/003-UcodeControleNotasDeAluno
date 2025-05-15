@@ -78,6 +78,7 @@ namespace Ucode.Api.Common.Api
             builder.Services.AddTransient<IGradeHandler, GradeHandler>();
             builder.Services.AddTransient<IEnrollmentHandler, EnrollmentHandler>();
             builder.Services.AddTransient<IUserAdminHandler, UserAdminHandler>();
+            builder.Services.AddTransient<IAccountHandler, AccountHandler>();
         }
     }
 }

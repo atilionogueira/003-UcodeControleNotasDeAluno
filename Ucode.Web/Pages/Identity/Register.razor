@@ -15,11 +15,32 @@
                 <DataAnnotationsValidator />
 
                 <MudTextField T="string"
+                              Label="Nome"
+                              HelperText="Campo Obrigatório"
+                              InputType="InputType.Text"
+                              For="@(() => InputModel.FullName)"
+                              @bind-Value="InputModel.FullName" />
+
+                <MudTextField T="string"
+                              Label="Login"
+                              HelperText="Campo Obrigatório"
+                              InputType="InputType.Email"
+                              For="@(() => InputModel.UserName)"
+                              @bind-Value="InputModel.UserName" />
+
+                <MudTextField T="string"
                               Label="E-mail"
                               HelperText="Campo Obrigatório"
                               InputType="InputType.Email"
                               For="@(() => InputModel.Email)"
                               @bind-Value="InputModel.Email" />
+
+                <MudTextField T="string"
+                              Label="Telefone"
+                              HelperText="Campo Obrigatório"
+                              InputType="InputType.Telephone"
+                              For="@(() => InputModel.PhoneNumber)"
+                              @bind-Value="InputModel.PhoneNumber" />
 
                 <MudTextField T="string"
                               Label="Senha"
